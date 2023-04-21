@@ -1,1 +1,1 @@
-# tp2-AEDSIII-HarryPotterGrid
+# tp2-AEDS3-HarryPotterGrid
