@@ -1,45 +1,54 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "file.h"
-#include "AlgGuloso.h"
+#include "grid.h"
 
 int main(int argc, char *argv[]) {
     
-    if (argc < 2) {
-        printf("Erro: nenhum arquivo de entrada fornecido.\n");
-        return 1;
-    }
+    if(argv[1] = 1) {
 
-    abre_arquivo(argv[1]);
-
-    int qtd_casos = scan_arquivo();
-    int linhas, colunas, **matriz;
-    entrada = fopen(argv[1], "r");
-        
-        if (entrada == NULL) {
-            printf("Falha na abertura do arquivo.\n");
+        if (argc < 2) {
+            printf("Erro: nenhum arquivo de entrada fornecido.\n");
             return 1;
         }
 
+        abre_arquivo(argv[2]);
+
+        int qtd_casos = scan_arquivo(entrada);
+        int linhas, colunas, **grid, **gridPD;
+
         for (int i = 0; i < qtd_casos; i++) {
-            linhas = scan_arquivo();
-            colunas = scan_arquivo();
 
-            // Aloca a matriz dinamicamente
-            matriz = (int **)malloc(linhas * sizeof(int *));
+            linhas = scan_arquivo(entrada);
+            colunas = scan_arquivo(entrada);
+
+            // Aloca o grid dinamicamente
+            grid = (int **)malloc(linhas * sizeof(int *));
             for (int j = 0; j < linhas; j++) {
-                matriz[j] = (int *)malloc(colunas * sizeof(int));
+                grid[j] = (int *)malloc(colunas * sizeof(int));
             }
 
-            monta_matriz(entrada, linhas, colunas, matriz);
-
-            // Libera a memória da matriz
+            // Alocação matriz pd (Programaçao Dinamica)
+            gridPD = (int **)malloc(linhas * sizeof(int *));
             for (int j = 0; j < linhas; j++) {
-                free(matriz[j]);
+                gridPD[j] = (int *)malloc(colunas * sizeof(int));
             }
-            free(matriz);
+
+            monta_grid(entrada, linhas, colunas, grid);
+            monta_gridPD(linhas, colunas, gridPD);
+            dinamica(linhas, colunas, gridPD, grid);
+
+            // Libera a memória do grid
+            for (int j = 0; j < linhas; j++) {
+                free(grid[j]);
+                free(gridPD[j]);
+            }
+            free(grid);
+            free(gridPD);
         }
+    }
+    
+    fecha_arquivo();
 
-        fecha_arquivo();
-
-        return 0;
+    return 0;
 }

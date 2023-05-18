@@ -15,7 +15,7 @@ void fecha_arquivo() {
     fclose(entrada);
 }
 
-int scan_arquivo() {
+int scan_arquivo(FILE* entrada) {
     int x;
     fscanf(entrada, "%d", &x);
     return x;
