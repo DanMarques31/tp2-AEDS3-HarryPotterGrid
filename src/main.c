@@ -53,7 +53,10 @@ int main(int argc, char *argv[]) {
             monta_gridPD(linhas, colunas, gridPD);
 
             //Chamada da função que executa a solução de programação dinâmica.
-            dinamica(linhas, colunas, gridPD, grid);
+            int result = dinamica(linhas, colunas, gridPD, grid);
+
+            //Imprime em um arquivo o resultado.
+            escreve_arquivo(saida, result);
             
             //Libera a memória do grid.
             for (int i = 0; i < linhas; i++) {
