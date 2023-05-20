@@ -1,37 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "algGuloso.h"
 
+// Funcao auxiliar para retorno do menor valor
+int minValor(int a, int b) {
+    if (a < b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+// Funcao auxiliar para retorno do maior valor
+int maxValor(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
 void guloso(int R, int C, int **grid) {
+    // Energia minima
+    int minEnerg = 1;
+    // Energia acomulada
+    int energia = 1;
 
-    int *aux_pos = (int *)malloc(R * C * sizeof(int));
-    int *aux_neg = (int *)malloc(R * C * sizeof(int));
-    int posCont = 0, negCont = 0;
-
+    // Percorre toda matriz
     for (int i = 0; i < R; i++) {
         for (int j = 0; j < C; j++) {
-            if (grid[i][j] > 0) {
-                aux_pos[posCont++] = grid[i][j];
-            } else if (grid[i][j] < 0) {
-                aux_neg[negCont++] = grid[i][j];
+            // Atualiza o valor de energia a cada posicao grid(i,j)
+            energia += grid[i][j];
+
+            // Se a energia acomulada não for suficiente, atualiza ela com 1 e atualiza a energia minima
+            if (energia <= 0) {
+                minEnerg = maxValor(minEnerg, abs(energia) + 1);
+                energia = 1;
             }
         }
     }
 
-    int soma_pos = 0, soma_neg = 0;
-    for (int i = 0; i < posCont; i++) {
-        soma_pos += aux_pos[i];
-    }
-
-    for (int i = 0; i < negCont; i++) {
-        soma_neg += aux_neg[i];
-    }
-
-    int result = soma_pos - soma_neg + 1;
-
-    printf("%d\n", result);
-
-    free(aux_pos);
-    free(aux_neg);
-
+    printf("%d\n", minEnerg); 
 }
