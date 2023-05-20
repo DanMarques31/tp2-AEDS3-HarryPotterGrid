@@ -6,7 +6,7 @@ FILE* entrada, *saida;
 //Função para abertura do arquivo.
 void abre_arquivo(char argv[]) {
     entrada = fopen(argv, "r");
-    saida = fopen("resultado.txt", "w");
+    saida = fopen("saida.txt", "w");
 
 
     if (entrada == NULL) {
