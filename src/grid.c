@@ -2,6 +2,7 @@
 #include "grid.h"
 #define INF 1000000000
 
+//Faz o preenchimento do grid com os dados do arquivo.
 void monta_grid(FILE* entrada, int R, int C, int **grid) {
     
     for (int i = 0; i < R; i++) {
@@ -11,6 +12,7 @@ void monta_grid(FILE* entrada, int R, int C, int **grid) {
     }
 }
 
+//Faz o preenchimento da matriz de programação dinâmica com os dados do arquivo.
 void monta_gridPD(int R, int C, int **pd) {
 
     for (int i = 0; i < R; i++) {
@@ -21,13 +23,15 @@ void monta_gridPD(int R, int C, int **pd) {
 
 }
 
-//função utilizada só para verificar a leitura dos dados.
+//Função utilizada só para verificar a leitura dos dados.
 void imprime_grid(int R, int C, int **grid) {
+
     for (int j = 0; j < R; j++) {
-            for (int k = 0; k < C; k++) {
-                printf("%d ", grid[j][k]);
-            }
-            printf("\n");
+        for (int k = 0; k < C; k++) {
+            printf("%d ", grid[j][k]);
         }
+        
+        printf("\n");
+    }
 }
 
