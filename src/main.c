@@ -77,7 +77,10 @@ int main(int argc, char *argv[]) {
             monta_grid(entrada, linhas, colunas, grid);
 
             //Chamada da função que executa a solução Gulosa.
-            guloso(linhas, colunas, grid);
+            int result = guloso(linhas, colunas, grid);
+            
+            //Imprime em um arquivo o resultado.
+            escreve_arquivo(saida, result);
 
             //Libera a memória do grid
             for (int i = 0; i < linhas; i++) {

@@ -21,7 +21,7 @@ int maxValor(int a, int b) {
     }
 }
 
-void guloso(int R, int C, int **grid) {
+int guloso(int R, int C, int **grid) {
 
     //Energia minima.
     int minEnerg = 1;
@@ -43,5 +43,7 @@ void guloso(int R, int C, int **grid) {
         }
     }
 
-    printf("%d\n", minEnerg); 
+    //Impressão e retorno do resultado.
+    printf("%d\n", minEnerg);
+    return minEnerg;
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "algDinamica.h"
 
-void dinamica(int R, int C,int **pd, int **grid) {
+int dinamica(int R, int C,int **pd, int **grid) {
 
     //Caso base, posição final da matriz.
     pd[R-1][C-1] = 1;
@@ -48,7 +48,9 @@ void dinamica(int R, int C,int **pd, int **grid) {
     }
     //energMin é exibida em pd[0,0].
     int result = pd[0][0];
-    printf("%d\n", result);
 
+    //Impressão e retorno do resultado.
+    printf("%d\n", result);
+    return result;
 }
 
