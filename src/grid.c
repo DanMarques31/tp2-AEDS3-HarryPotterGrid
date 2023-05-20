@@ -23,7 +23,7 @@ void monta_gridPD(int R, int C, int **pd) {
 
 }
 
-//Função utilizada só para verificar a leitura dos dados.
+//Função utilizada só para verificar visualmente a leitura dos dados.
 void imprime_grid(int R, int C, int **grid) {
 
     for (int j = 0; j < R; j++) {
