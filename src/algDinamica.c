@@ -40,7 +40,7 @@ int dinamica(int R, int C,int **pd, int **grid) {
             if (energMin - grid[i][j] > 0) {
                 pd[i][j] = energMin - grid[i][j];
             } 
-            
+            //Caso energMin for menor que 0, retorna 1 de energia.
             else {
                 pd[i][j] = 1;
             }

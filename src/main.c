@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //Abre o arquivo, lê o "T" que representa a quantidade de casos e instância as variáveis.
+    //Abre o arquivo, lê o "T" que representa a quantidade de casos e instancia as variáveis.
     abre_arquivo(argv[2]);
 
     int qtd_casos = scan_arquivo(entrada);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         linhas = scan_arquivo(entrada);
         colunas = scan_arquivo(entrada);
 
-        //Executa a 2ª estratégia, o algoritmo de Programação Dinâmica.
+        //Executa a 1ª estratégia, o algoritmo de Programação Dinâmica.
         if (atoi(argv[1]) == 1) {
             
             //Aloca o grid dinâmicamente.
@@ -90,8 +90,7 @@ int main(int argc, char *argv[]) {
         }
     }
     
-    //Uso da função 'getrusage'.
-
+    //Chamada da função 'getrusage'.
     getrusage(RUSAGE_SELF, &usage);
 
     //Conversão dos tempos para segundos.
