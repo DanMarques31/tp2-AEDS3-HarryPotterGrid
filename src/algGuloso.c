@@ -29,18 +29,20 @@ int guloso(int R, int C, int **grid) {
     //Energia acomulada.
     int energia = 1;
 
-    //Percorre toda matriz.
+    // Percorre toda matriz.
     for (int i = 0; i < R; i++) {
         for (int j = 0; j < C; j++) {
-            //Atualiza o valor de energia a cada posicao grid(i,j).
+            // Atualiza o valor de energia a cada posição grid(i,j).
             energia += grid[i][j];
 
-            //Se a energia acumulada não for suficiente, atualiza ela com 1 e atualiza a energia mínima.
+            // Verifica se a energia acumulada não é suficiente.
             if (energia <= 0) {
-                //Retorna o maior valor entre minEnerg e o valor de energia + 1. (abs() retorna o valor do número sem seu sinal).
+                // Atualiza a energia mínima apenas se ela for maior do que a energia atual + 1.
                 minEnerg = maxValor(minEnerg, abs(energia) + 1);
-                energia = 1;
             }
+
+            // Atualiza a energia para no mínimo 1.
+            energia = maxValor(1, energia);
         }
     }
 

@@ -6,16 +6,12 @@
 #include "grid.h"
 #include "algDinamica.h"
 #include "algGuloso.h"
-#include "algBruta.h"
 
 int main(int argc, char *argv[]) {
     
-    //Cria as structs para o uso das funções 'gettimeofday' e 'getrusage' respectivamente.
-    struct timeval start, end;
+    //Cria a struct e a variável para o uso da função 'getrusage' .
     struct rusage usage;
-
-    //Inicio da função 'gettimeofday'.
-    gettimeofday(&start, NULL);
+    double user_time, system_time;
 
     //Caso n° de argumentos no terminal seja < 3 significa que não foi passado nenhum arquivo.
     if (argc < 3) {
@@ -94,16 +90,17 @@ int main(int argc, char *argv[]) {
         }
     }
     
-    //Fim da função 'gettimeofday' e uso da função 'getrusage'.
+    //Uso da função 'getrusage'.
 
-    gettimeofday(&end, NULL);
     getrusage(RUSAGE_SELF, &usage);
 
+    //Conversão dos tempos para segundos.
+    user_time = (double) usage.ru_utime.tv_sec + (double) usage.ru_utime.tv_usec / 1000000.0;
+    system_time = (double) usage.ru_stime.tv_sec + (double) usage.ru_stime.tv_usec / 1000000.0;
+    
     //Impressão dos tempos de execução.
-
-    printf("Tempo de execução: %ld microsegundos\n", (((end.tv_sec - start.tv_sec) * 1000000) + (end.tv_usec - start.tv_usec)));
-    printf("Tempo de usuário: %ld microsegundos\n", usage.ru_utime.tv_usec);
-    printf("Tempo de sistema: %ld microsegundos\n", usage.ru_stime.tv_usec);
+    printf("Tempo de usuário: %f segundos\n", user_time);
+    printf("Tempo de sistema: %f segundos\n", system_time);
 
     fecha_arquivo();
     return 0;
