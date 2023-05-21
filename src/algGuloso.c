@@ -35,8 +35,9 @@ int guloso(int R, int C, int **grid) {
             //Atualiza o valor de energia a cada posicao grid(i,j).
             energia += grid[i][j];
 
-            //Se a energia acomulada não for suficiente, atualiza ela com 1 e atualiza a energia minima.
+            //Se a energia acumulada não for suficiente, atualiza ela com 1 e atualiza a energia mínima.
             if (energia <= 0) {
+                //Retorna o maior valor entre minEnerg e o valor de energia + 1. (abs() retorna o valor do número sem seu sinal).
                 minEnerg = maxValor(minEnerg, abs(energia) + 1);
                 energia = 1;
             }

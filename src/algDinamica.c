@@ -18,9 +18,9 @@ int dinamica(int R, int C,int **pd, int **grid) {
             }
 
             //Escolha do caminho de menor energia partindo da posicao inicial.
-            int energMin = INF; // energMin com valor suficientemente grande.
+            int energMin = INF; //Inicializa energMin com valor suficientemente grande.
 
-            //Atualizacao de energMin com o mínimo entre as posicos abaixo e a direita.
+            //Atualizacao de energMin com o mínimo entre as posicões abaixo e a direita.
             if (i+1 < R) {
                 //Posicao abaixo.
                 energMin = pd[i+1][j];

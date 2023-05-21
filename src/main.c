@@ -6,6 +6,7 @@
 #include "grid.h"
 #include "algDinamica.h"
 #include "algGuloso.h"
+#include "algBruta.h"
 
 int main(int argc, char *argv[]) {
     
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]) {
         linhas = scan_arquivo(entrada);
         colunas = scan_arquivo(entrada);
 
-        //Executa o 2° argumento, o algoritmo de Programação Dinâmica.
+        //Executa a 2ª estratégia, o algoritmo de Programação Dinâmica.
         if (atoi(argv[1]) == 1) {
             
             //Aloca o grid dinâmicamente.
@@ -67,7 +68,7 @@ int main(int argc, char *argv[]) {
             free(gridPD);
         } 
         
-        //Executa o 3° argumento, o algoritmo Guloso.
+        //Executa a 2ª estratégia, o algoritmo Guloso.
         else if (atoi(argv[1]) == 2) {
             
             //Aloca o grid dinâmicamente.
@@ -82,10 +83,10 @@ int main(int argc, char *argv[]) {
             //Chamada da função que executa a solução Gulosa.
             int result = guloso(linhas, colunas, grid);
             
-            //Imprime em um arquivo o resultado.
+            //Imprime em um arquivo texto o resultado.
             escreve_arquivo(saida, result);
 
-            //Libera a memória do grid
+            //Libera a memória do grid.
             for (int i = 0; i < linhas; i++) {
                 free(grid[i]);
             }
